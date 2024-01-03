@@ -1,0 +1,199 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+    width: 100%
+}
+
+
+/* Estilos para os cabeçalhos */
+h1 {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h2 {
+  color: #666;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Estilos para os links */
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para os botões */
+
+.bar {
+    overflow: hidden;
+    background-color: rgb(77, 77, 77);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: white;
+    padding: 4px;
+    z-index: 1;
+}
+
+.logo {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 15%;
+}
+
+.botoes {
+    margin-left: 26%;
+    margin-top: 28px;
+}
+
+.botao {
+    background-color: rgb(77, 77, 77);
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 0%;
+    font-family: josefin sans;
+}
+
+.botao1 {
+    background-color: rgb(219, 219, 219);
+    color: black;
+    border: 1.5px solid black;
+}
+
+.botao2 {
+    background-color: white;
+    color: black;
+    border: 1.5px solid black;
+}
+
+.imagem {
+    margin-top: 85px;
+    width: 100%;
+    z-index: -1;
+}
+
+.titulo {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+
+.titulo1 {
+    position: absolute; 
+    font-size: 750%;
+    color: white;
+    font-family: josefin sans;
+    font-weight: bold;
+    margin-top: -35%;
+    margin-left: 21.5%;
+}
+
+.subtitulo {
+    position: absolute;
+    color: white;
+    font-size: 160%;
+    font-family: josefin sans;
+    margin-top: -27%;
+    margin-left: 29%;
+}
+
+h1 {
+    font-family: josefin sans;
+    font-size: 60px;
+    text-align: center;
+}
+
+.simuladores {
+    text-align: center;
+}
+
+.button1 {
+    background-color: rgb(77, 77, 77);
+    border: none;
+    color: white;
+    padding: 4.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 110px;
+    font-family: josefin sans;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button {
+    background-color: rgb(77, 77, 77);
+    border: none;
+    color: white;
+    padding: 4.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 110px;
+    font-family: josefin sans;
+    font-weight: bold;
+    margin-left: 110px;
+    cursor: pointer;
+}
+
+.button2 {
+    background-color: #1f797a;
+    border: none;
+    color: white;
+    padding: 4.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 110px;
+    font-family: josefin sans;
+    font-weight: bold;
+    margin-left: 110px;
+    cursor: pointer;
+}
+
+.rodape {
+    overflow: hidden;
+    background-color: rgb(77, 77, 77);
+    position: relative;
+    bottom: 0;
+    width: 96.8%;
+    color: white;
+    padding: 30px;
+}
+
+.textorodape {
+    font-size: 400%;
+    margin-left: 39%;
+    font-family: sans-serif;
+    margin-top: 0%;
+    position: absolute;
+}
+
+.textorodape1 {
+    font-size: 90%;
+    text-align: center;
+    font-family: sans-serif;
+    margin-top: 100px;
+}
+
+.topo {
+    text-decoration: none;
+    padding: 60px;
+    color: white;
+    font-family: josefin sans;
+    margin-left: 43.5%;
+    margin-top: 50px;
+}
