@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Juros</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+        integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>Juros Compostos - Calculadora c/Reforços Mensais III</h1>
+    </header>
+    <div id="exportContent">
+        <div class="divisao"></div>
+        <div class="conteiner">
+            <section class="layout">
+                <div class="entradas">
+
+                    <label for="valorInicial">Valor inicial</label>
+                    <div class="campo">
+                        <div class="prefixo"><b>€</b></div>
+                        <input type="number" name="valorInicial" id="valorInicial" placeholder="0.00" />
+                    </div>
+
+                    <label for="investimentoMensal">Investimento mensal</label>
+                    <div class="campo">
+                        <div class="prefixo"><b>€</b></div>
+                        <input type="number" name="investimentoMensal" id="investimentoMensal" placeholder="0.00" />
+                    </div>
+
+                    <label for="juros">Taxa de juros mensal</label>
+                    <div class="campo">
+                        <div class="prefixo"><b>%</b></div>
+                        <input type="number" name="juros" id="juros" placeholder="0%" />
+                    </div>
+
+                    <label for="valorDesejado">Valor desejado</label>
+                    <div class="campo">
+                        <div class="prefixo"><b>€</b></div>
+                        <input type="number" name="valorDesejado" id="valorDesejado" placeholder="0.00" />
+                    </div>
+
+                    <button class="botao" id="entry"><b>CALCULAR</b></button>
+                    <button class="botao" id="reset"><b>ANULAR</b></button>
+                    <!-- Adicione isso dentro do seu bloco body -->
+                    <div class="export-dropdown">
+                        <label for="exportOptions">Exportar como:</label>
+                        <select id="exportOptions">
+                            <option value="csv">CSV</option>
+                            <option value="json">JSON</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                        <button class="botao" id="exportButton"><b>EXPORTAR</b></button>
+                    </div>
+                    <br>
+                    <div class="social-buttons" style="padding-left: 35px ;">
+                        <button class="facebook-button" onclick="shareOnFacebook()">
+                            <i class="fab fa-facebook" style="font-size: 20px;"></i>
+                        </button>
+                        <button class="twitter-button" onclick="shareOnTwitter()">
+                            <i class="fab fa-twitter" style="font-size: 20px;"></i>
+                        </button>
+                        <button class="whatsapp-button" onclick="shareOnWhatsApp()">
+                            <i class="fab fa-whatsapp" style="font-size: 20px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="resultados">
+                    <h2>Resultados</h2>
+                    <div class="cards">
+                        <div class="card">
+                            <h4>Valor total</h4>
+                            <div class="valor-resultado"><b id="valorTotal">€0.00</b></div>
+                        </div>
+                        <div class="card">
+                            <h4>Valor investido</h4>
+                            <div class="valor-resultado"><b id="valorInvestido">€0.00</b></div>
+                        </div>
+                        <div class="card">
+                            <h4>Juros totais</h4>
+                            <div class="valor-resultado"><b id="jurosTotais">€0.00</b></div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <h4>Tempo</h4>
+                            <div class="valor-resultado"><b id="anos">0 Anos</b></div>
+                        </div>
+                    </div>
+                    <div id="chart">
+                        <canvas id="myChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </section>
+            <section style="overflow-x: auto;">
+                <table id="display" class="listaResultado">
+                    <tr>
+                        <th class="table-th-1">Mês</th>
+                        <th class="table-th-2">Juros do mês</th>
+                        <th class="table-th-3">Juros acumulado</th>
+                        <th class="table-th-4">Total investido</th>
+                        <th class="table-th-5">Total acumulado</th>
+                    </tr>
+                    <tr>
+                        <td> 0 </td>
+                        <td> 0 </td>
+                        <td> 0 </td>
+                        <td> 0 </td>
+                        <td> 0 </td>
+                    </tr>
+
+                </table>
+            </section>
+        </div>
+    </div>
+    <script>
+        var entry = document.getElementById("entry")
+        entry.addEventListener("click", setValues)
+
+        let cor1 = 'rgba(0, 223, 45, 1)'
+        let cor2 = 'rgba(28, 42, 92,1)'
+        let corTransparente1 = 'rgba(0, 223, 45, 0.2)'
+        let corTransparente2 = 'rgba(28, 42, 92, 0.2)'
+
+        const ctx = document.getElementById('myChart').getContext("2d");
+        let myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: meses = ['Meses'],
+                datasets: [{
+                    label: 'Acumulo do mês',
+                    data: [0],
+                    backgroundColor: [
+                        corTransparente1
+                    ],
+                    borderColor: [
+                        cor1
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        document.getElementById('exportButton').addEventListener('click', exportData);
+
+        function exportData() {
+            var selectedExportOption = document.getElementById('exportOptions').value;
+
+            if (selectedExportOption === 'csv') {
+                exportToCSV();
+            } else if (selectedExportOption === 'json') {
+                exportToJSON();
+            } else if (selectedExportOption === 'pdf') {
+                exportToPDF();
+            }
+        }
+
+        function exportToCSV() {
+            // Obtenha os dados da tabela
+            var table = document.getElementById('display');
+            var csv = [];
+
+            // Adicione o cabeçalho
+            var header = [];
+            for (var i = 0; i < table.rows[0].cells.length; i++) {
+                header.push(table.rows[0].cells[i].innerText);
+            }
+            csv.push(header.join(','));
+
+            // Adicione os dados
+            for (var i = 1; i < table.rows.length; i++) {
+                var row = [];
+                for (var j = 0; j < table.rows[i].cells.length; j++) {
+                    row.push(table.rows[i].cells[j].innerText);
+                }
+                csv.push(row.join(','));
+            }
+
+            // Crie um Blob com os dados CSV
+            var blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+
+            // Crie um elemento de link para baixar o arquivo CSV
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'dados.csv';
+
+            // Adicione o link ao corpo do documento
+            document.body.appendChild(link);
+
+            // Acione o clique no link para iniciar o download
+            link.click();
+
+            // Remova o link do corpo do documento
+            document.body.removeChild(link);
+        }
+
+        function exportToJSON() {
+            // Obtenha os dados da tabela
+            var table = document.getElementById('display');
+            var data = [];
+
+            for (var i = 1; i < table.rows.length; i++) {
+                var rowData = {};
+                var row = table.rows[i];
+
+                for (var j = 0; j < row.cells.length; j++) {
+                    var columnHeader = table.rows[0].cells[j].innerText.toLowerCase().replace(' ', '_');
+                    rowData[columnHeader] = row.cells[j].innerText;
+                }
+
+                data.push(rowData);
+            }
+
+            var jsonData = JSON.stringify(data, null, 2);
+
+            var blob = new Blob([jsonData], { type: 'application/json' });
+
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'dados.json';
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+        }
+
+        function exportToPDF() {
+            var table = document.getElementById('display');
+            var pdf = new jsPDF();
+
+            pdf.autoTable({
+                head: [getHeader()],
+                body: getBody(table),
+            });
+
+            pdf.save('dados.pdf');
+        }
+
+        function getHeader() {
+            var header = [];
+            var table = document.getElementById('display');
+            for (var i = 0; i < table.rows[0].cells.length; i++) {
+                header.push(table.rows[0].cells[i].innerText);
+            }
+            return header;
+        }
+
+        function getBody(table) {
+            var body = [];
+            for (var i = 1; i < table.rows.length; i++) {
+                var row = [];
+                for (var j = 0; j < table.rows[i].cells.length; j++) {
+                    row.push(table.rows[i].cells[j].innerText);
+                }
+                body.push(row);
+            }
+            return body;
+        }
+
+        function setValues() {
+            let q = Number(document.getElementById('valorInicial').value)
+            let w = Number(document.getElementById('investimentoMensal').value)
+            let eAnual = Number(document.getElementById('juros').value)
+            let r = Number(document.getElementById('valorDesejado').value);
+            let t = document.getElementById('valorTotal')
+            let y = document.getElementById('valorInvestido')
+            let u = document.getElementById('jurosTotais')
+            let v = document.getElementById('anos')
+            calcular(q, w, eAnual, r, t, y, u, v)
+        }
+
+        function calcular(valorInicial, investimentoMensal, jurosAnual, valorDesejado, valorTotal, valorInvestido, jurosTotais, anos) {
+            let acumuloTotal = valorInicial
+            let totalInvestido = valorInicial
+            let totalJuros = Number()
+            let dividendo = Number()
+            let jurosAcumuladoArr = []
+            let acumuloTotalArr = []
+            let totalInvestidoArr = []
+            let dividendoMesArr = []
+            let jurosMensal = jurosAnual / 12 / 100;
+
+            if (document.getElementById('valorDesejado').value == '') {
+                resetTable(false)
+            } else {
+                resetTable(true)
+            }
+
+            let meses = 0;
+
+            while (acumuloTotal < valorDesejado) {
+                dividendo = acumuloTotal * jurosMensal;
+                dividendoMesArr[meses] = dividendo.toFixed(2)
+
+                if (jurosAcumuladoArr.length < 1) {
+                    jurosAcumuladoArr[meses] = dividendo
+                } else {
+                    jurosAcumuladoArr[meses] = dividendo + jurosAcumuladoArr[meses - 1]
+                }
+
+                acumuloTotal += dividendo + investimentoMensal
+                acumuloTotalArr[meses] = acumuloTotal.toFixed(2)
+
+                totalInvestido += investimentoMensal
+                totalInvestidoArr[meses] = totalInvestido.toFixed(2)
+
+                totalJuros += dividendo
+
+                meses++;
+            }
+
+            valorTotal.innerHTML = "€" + acumuloTotal.toFixed(2)
+            valorInvestido.innerHTML = "€" + totalInvestido.toFixed(2)
+            jurosTotais.innerHTML = "€" + totalJuros.toFixed(2)
+            anos.innerHTML = (meses / 12).toFixed(4) + " Anos";
+
+            lista()
+            grafico(acumuloTotalArr, meses)
+
+            function lista() {
+                let linha = 1
+
+                for (i = 0; i < meses; i++) {
+                    let display = document.getElementById('display')
+
+                    let novaLinha = display.insertRow(linha)
+
+                    let cell1 = novaLinha.insertCell(0)
+                    let cell2 = novaLinha.insertCell(1)
+                    let cell3 = novaLinha.insertCell(2)
+                    let cell4 = novaLinha.insertCell(3)
+                    let cell5 = novaLinha.insertCell(4)
+
+                    cell1.innerHTML = i + 1
+                    cell2.innerHTML = dividendoMesArr[i]
+                    cell3.innerHTML = jurosAcumuladoArr[i].toFixed(2)
+                    cell4.innerHTML = totalInvestidoArr[i]
+                    cell5.innerHTML = acumuloTotalArr[i]
+
+                    linha++
+                }
+            }
+        }
+
+        function grafico(acumuloTotalArr, meses) {
+            let tempo = []
+            for (i = 0; i < meses; i++) {
+                tempo[i] = i + 1
+            }
+            if (tempo.length == 0) {
+                tempo[0] = 'Meses'
+            }
+            myChart
+            myChart.destroy()
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: tempo,
+                    datasets: [{
+                        label: 'Acumulo do mês',
+                        data: acumuloTotalArr,
+                        backgroundColor: [
+                            corTransparente1,
+                            corTransparente2
+                        ],
+                        borderColor: [
+                            cor1,
+                            cor2
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        document.getElementById('reset').addEventListener('click', function () {
+            grafico(0, 0)
+            resetTable(false)
+            document.getElementById('valorInicial').value = ''
+            document.getElementById('investimentoMensal').value = ''
+            document.getElementById('juros').value = ''
+            document.getElementById('valorDesejado').value = ''
+            document.getElementById('valorTotal').innerText = '€0.00'
+            document.getElementById('valorInvestido').innerText = '€0.00'
+            document.getElementById('jurosTotais').innerText = '€0.00'
+            document.getElementById('anos').innerText = '0 Anos';
+        })
+
+        function resetTable(cond) {
+            let novoCalculo = cond
+
+            document.getElementById('display').innerHTML = `
+        <tr>
+            <th class="table-th-1">Mês</th>
+            <th class="table-th-2">Juros do mês</th>
+            <th class="table-th-3">Juros acumulado</th>
+            <th class="table-th-4">Total investido</th>
+            <th class="table-th-5">Total acumulado</th>
+        </tr>`
+
+            if (novoCalculo == false) {
+                document.getElementById('display').innerHTML += `
+            <tr style="background-color: white;">
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+            </tr>
+            `
+            }
+        }
+        document.getElementById('exportButton').addEventListener('click', function () {
+            var element = document.getElementById('exportOptions');
+            var exportFormat = element.options[element.selectedIndex].value;
+
+            if (exportFormat === 'pdf') {
+                exportToPDF();
+            }
+        });
+
+        function exportToPDF() {
+            var element = document.getElementById('exportContent');
+
+            // Set custom options, including page width and height
+            var options = {
+                margin: 10,
+                filename: 'exported_document',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a2', orientation: 'portrait' }
+            };
+
+            // Export to PDF with custom options
+            html2pdf(element, options);
+        }
+        function shareOnFacebook() {
+            var urlToShare = encodeURIComponent(window.location.href);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare, '_blank');
+        }
+
+        function shareOnTwitter() {
+            var textToShare = encodeURIComponent('Checka aí como vou ficar rico!');
+            var urlToShare = encodeURIComponent(window.location.href);
+            window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            var textToShare = encodeURIComponent('Cheka aí como vou ficar rico! ' + window.location.href);
+            window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
+        }
+    </script>
+</body>
+
+<footer>
+</footer>
+
+</html>
