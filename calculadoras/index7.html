@@ -16,8 +16,11 @@
 </head>
 
 <body>
-    <header>
-        <h1>Juros Compostos - Calculadora c/Reforços Mensais I</h1>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+        <h1>Simulador de Juros Compostos - Montante Acumulado (Com Reforços Mensais)</h1>
+        <div class="header-buttons">
+            <button class="botao" onclick="window.location.href='index7_sr.html'"><b>Sem Reforços</b></button>
+        </div>
     </header>
     <div id="exportContent">
         <div class="divisao"></div>
@@ -55,7 +58,6 @@
                     </div>
                     <button class="botao" id="entry"><b>CALCULAR</b></button>
                     <button class="botao" id="reset"><b>ANULAR</b></button>
-                    <!-- Adicione isso dentro do seu bloco body -->
                     <div class="export-dropdown">
                         <label for="exportOptions">Exportar como:</label>
                         <select id="exportOptions">
@@ -63,7 +65,7 @@
                             <option value="json">JSON</option>
                             <option value="pdf">PDF</option>
                         </select>
-                        <button class="botao" id="exportButton"><b>EXPORTAR</b></button>
+                        <button class="botao2" id="exportButton"><b>EXPORTAR</b></button>
                     </div>
                     <br>
                     <div class="social-buttons" style="padding-left: 35px ;">

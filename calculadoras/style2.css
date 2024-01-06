@@ -130,6 +130,27 @@ label {
     transition: .3s;
 }
 
+.botao2 {
+    background-color: var(--cor-primaria);
+    border: none;
+    color: white;
+    height: 3rem;
+    width: 103px;
+    margin-top: 1rem;
+    border-radius: var(--radious-1);
+    position: relative;
+    z-index: 0;
+    transition: .3s;
+}
+
+.botao2:hover {
+    background-color: var(--cor-secundaria);
+}
+
+.botao2:hover b  {
+    letter-spacing: .2rem;
+}
+
 .botao:hover {
     background-color: var(--cor-secundaria);
 }
@@ -155,6 +176,13 @@ label {
 } */
 
 .botao b {
+    z-index: 2;
+    position: relative;
+    font-size: 1.2rem;
+    transition: .3s;
+}
+
+.botao2 b {
     z-index: 2;
     position: relative;
     font-size: 1.2rem;
@@ -426,6 +454,10 @@ label {
 .twitter-button:hover,
 .whatsapp-button:hover {
     background-color: #135492; /* Darker color on hover */
+}
+
+.resultados .cards .card:nth-child(1) {
+    background-color: #b1b1b1; /* Ou qualquer cor de cinza mais escura desejada */
 }
 
 
