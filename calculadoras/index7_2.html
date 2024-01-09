@@ -16,6 +16,9 @@
 </head>
 <body>
     <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../img/logo.png" height="70px"></a>
+         </div>
         <h1>Simulador de Juros Compostos - Tempo Necessário</h1>
     </header>
     <div id="exportContent">
@@ -77,6 +80,10 @@
                     <h2>Resultados</h2>
                     <div class="cards">
                         <div class="card">
+                            <h4>Tempo</h4>
+                            <div class="valor-resultado"><b id="anos">0 Anos</b></div>
+                        </div>
+                        <div class="card">
                             <h4>Valor total</h4>
                             <div class="valor-resultado"><b id="valorTotal">€0.00</b></div>
                         </div>
@@ -89,10 +96,6 @@
                             <div class="valor-resultado"><b id="jurosTotais">€0.00</b></div>
                         </div>
                         <br>
-                        <div class="card">
-                            <h4>Tempo</h4>
-                            <div class="valor-resultado"><b id="anos">0 Anos</b></div>
-                        </div>
                     </div>
                     <div id="chart">
                         <canvas id="myChart" width="400" height="200"></canvas>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora De Juro Composto</title>
+    <title>Capital Cash - Educação Financeira</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="CalculadoraDeJuroComposto.css">
@@ -13,36 +13,46 @@
 <body>
     <div class="bar">
         <div class="logo">
-            <img src="img/logo.webp" alt="">
+            <a href="index.html"><img src="img/logo.png" height="90px"></a>
         </div>
         <div class="botoes">
-            <a href="index.html" class="botao botao1">Home</a>
+            <a href="index.html"><button class="botao botao2">Home</button> </a>
             <button class="botao botao2" onclick="scrollToCalculadoras()">Simuladores</button>
-            <a href="educacao.html" class="botao botao2">Educação Financeira</a>
-            <a href="index.html" class="botao botao2">FAQ</a>
+            <a href="educacao.html"><button class="botao botao1">Educação Financeira</button></a>
+            <a href="faq/faq.html"><button class="botao botao2">FAQ</button> </a>
         </div>
     </div>
+    <div class="titulo">
+        <img class="imagem" src="../img/banner3.jpg" alt="">
+    </div>
     <br><br><br><br><br>
-    <h1>O que são Juros Compostos?</h1>
-    <p>Os juros compostos são um conceito fundamental no mundo das finanças. Diferentemente dos juros simples, onde
-        os ganhos são calculados apenas sobre o valor inicial, os juros compostos levam em consideração não apenas o
-        capital inicial, mas também os juros acumulados ao longo do tempo.</p>
-    <h1>Características dos Juros Compostos</h1>
-    <p>A principal característica dos juros compostos, e o que o diferencia dos juros simples, é que este modelo
-        financeiro permite o reinvestimento de capital mais juros em cada período de exercício.</p>
-    <p>Em outras palavras, os juros compostos são calculados sobre o capital inicial mais os juros acumulados em cada
-        período de exercício.</p>
-    <p>Ao capitalizar o investimento, o capital reinvestido em cada período é maior, o que aumenta gradualmente o
-        montante de juros obtidos. É uma espécie de bola de neve descendente que permite obter uma maior rentabilidade
-        ao longo do tempo, utilizando o mesmo capital inicial.
-        No entanto, outra característica dos produtos de investimento de juros compostos é que não é possível dispor dos
-        juros gerados pelo capital até que o prazo estabelecido tenha terminado.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style="width: 100;">
+                    <img src="img/post1.jpg" class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 100;">
+                    <img src="img/post2.jpg" class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 100;">
+                    <img src="img/post3.jpg" class="card-img-top" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
     <h1> Como funciona a fórmula de juros compostos?</h1>
-    <p>Os juros compostos são calculados como se mostra na fórmula abaixo. Só precisaremos de ter alguns dados como o
+    <p style="text-align: center;">Os juros compostos são calculados como se mostra na fórmula abaixo. Só precisaremos
+        de ter alguns dados como o
         capital inicial, os juros e o período. O primeiro passo é entender as variáveis desse cálculo:</p>
     <img src="https://lh3.googleusercontent.com/bQrApVYJlITGgY8pl11bG0x44JEmFwuCuS5WB3AJ7QBa3pD5GDinpYflFu6OsvjOxawVdFXT8AYTP2Gl5Jaa2fNEjxswhjcJ-CfVrvPvH_Gjv_C2KnpruS9dItnri9q3piccTcRq"
         alt="" class="d-block mx-auto">
-    <img src="img/juro_composto.png" alt="" class="d-block mx-auto">
+    <img src="img/juro_composto.png" height="1000px" class="d-block mx-auto">
 
     <footer class="text-center text-white" style="background-color: #ffffff;">
         <div class="text-center text-white p-3" style="background-color: #4d4d4d;">
@@ -50,11 +60,10 @@
             <a class="text-white">Capital Cash</a>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="CalculadoraDeJuroComposto.js"></script>
+
 
 </body>
 
