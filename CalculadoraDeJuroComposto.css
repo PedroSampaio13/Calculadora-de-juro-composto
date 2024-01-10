@@ -236,6 +236,32 @@ footer{
     background-color: black;
 }
 
+@media (max-width: 768px) {
+    .botoes {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .botao {
+        width: 100%;
+    }
+
+    .titulo img {
+        height: auto;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+}
+
+
 
 
 

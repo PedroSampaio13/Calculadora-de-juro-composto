@@ -497,3 +497,56 @@ label {
 footer{
     background-color: black;
 }
+
+.export-dropdown {
+    margin-bottom: 20px; /* Ajuste a margem inferior conforme necessário */
+}
+
+#exportOptions {
+    
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo img {
+    height: 70px;
+    width: 70px;
+    margin-top: 10px;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .logo img {
+        height: 60px;
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo img {
+        height: 50px;
+        width: 50px;
+    }
+
+    h1 {
+        font-size: 1em;
+    }
+}
+
+
+
