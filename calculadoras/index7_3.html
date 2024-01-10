@@ -15,14 +15,13 @@
 </head>
 
 <body>
-    <header>
+    <header style="padding: 50px; padding-top: 40px">
         <div class="logo">
-            <a href="../index.html"><img src="../img/logo.png" height="70px"></a>
+            <a href="../index.html"><img style="margin-top: 20px;" src="../img/logo.png" height="90px" width="90px"></a>
          </div>
         <h1>Simulador de Juros Compostos - Reforços Mensais Necessários</h1>
     </header>
     <div id="exportContent">
-        <div class="divisao"></div>
         <div class="conteiner">
             <section class="layout">
                 <div class="entradas">
@@ -429,19 +428,41 @@
             html2pdf(element, options);
         }
         function shareOnFacebook() {
-            var urlToShare = encodeURIComponent(window.location.href);
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare, '_blank');
-        }
+        // Obtenha os dados do último mês diretamente dos elementos
+        var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
+        var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
+        var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
 
-        function shareOnTwitter() {
-            var textToShare = encodeURIComponent('Checka aí como vou ficar rico!');
-            var urlToShare = encodeURIComponent(window.location.href);
-            window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
-        }
+        // Adicionando informações específicas ao compartilhar no Facebook
+        var textToShare = encodeURIComponent('Simulação de Juros Compostos: Veja como vou ficar rico! 💰📈\n' +
+            `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
+        var urlToShare = encodeURIComponent(window.location.href);
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
+    }
 
-        function shareOnWhatsApp() {
-            var textToShare = encodeURIComponent('Cheka aí como vou ficar rico! ' + window.location.href);
-            window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
-        }
+    function shareOnTwitter() {
+        // Obtenha os dados do último mês diretamente dos elementos
+        var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
+        var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
+        var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
+
+        // Adicionando informações específicas ao compartilhar no Twitter
+        var textToShare = encodeURIComponent(`Confira essa simulação de Juros Compostos! Veja como vou ficar rico! 💰📈\n` +
+            `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
+        var urlToShare = encodeURIComponent(window.location.href);
+        window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
+    }
+
+    function shareOnWhatsApp() {
+        // Obtenha os dados do último mês diretamente dos elementos
+        var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
+        var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
+        var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
+
+        // Adicionando informações específicas ao compartilhar no WhatsApp
+        var textToShare = encodeURIComponent('Cheka aí como vou ficar rico!\n' +
+            `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
+        window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
+    }
     </script>
 </body>

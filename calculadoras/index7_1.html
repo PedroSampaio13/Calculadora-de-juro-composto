@@ -11,18 +11,17 @@
         integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <link rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-    <header>
+    <header style="padding: 50px; padding-top: 40px">
         <div class="logo">
-            <a href="../index.html"><img src="../img/logo.png" height="70px"></a>
-         </div>
+            <a href="../index.html"><img style="margin-top: 20px;" src="../img/logo.png" height="90px" width="90px"></a>
+        </div>
         <h1>Simulador de Juros Compostos - Montante Inicial</h1>
     </header>
     <div id="exportContent">
-        <div class="divisao"></div>
         <div class="conteiner">
             <section class="layout">
                 <div class="entradas">
@@ -48,8 +47,8 @@
                     </div>
                     <label for="numeroAnos">Número de anos</label>
                     <div class="campo">
-                    <div class="prefixo"><b>A</b></div>
-                    <input type="number" name="numeroAnos" id="numeroAnos" placeholder="0" />
+                        <div class="prefixo"><b>A</b></div>
+                        <input type="number" name="numeroAnos" id="numeroAnos" placeholder="0" />
                     </div>
                     <button class="botao" id="calcular"><b>CALCULAR</b></button>
                     <button class="botao" id="reset"><b>ANULAR</b></button>
@@ -118,20 +117,20 @@
         let myChart; // Declare the chart variable outside the function
 
         function setValues() {
-    let objetivoFinal = Number(document.getElementById('objetivoFinal').value);
-    let investimentoMensal = Number(document.getElementById('investimentoMensal').value);
-    let taxaJurosAnual = Number(document.getElementById('taxaJuros').value);
-    let numeroMeses = Number(document.getElementById('numeroMeses').value);
-    let numeroAnos = Number(document.getElementById('numeroAnos').value); // Adicionado
-    let montanteInicial = document.getElementById('montanteInicial');
-    let objetivoFinalDisplay = document.getElementById('objetivoFinalDisplay');
-    let acumuladoMensalDisplay = document.getElementById('acumuladoMensal');
+            let objetivoFinal = Number(document.getElementById('objetivoFinal').value);
+            let investimentoMensal = Number(document.getElementById('investimentoMensal').value);
+            let taxaJurosAnual = Number(document.getElementById('taxaJuros').value);
+            let numeroMeses = Number(document.getElementById('numeroMeses').value);
+            let numeroAnos = Number(document.getElementById('numeroAnos').value); // Adicionado
+            let montanteInicial = document.getElementById('montanteInicial');
+            let objetivoFinalDisplay = document.getElementById('objetivoFinalDisplay');
+            let acumuladoMensalDisplay = document.getElementById('acumuladoMensal');
 
-    // Converta o número de anos em meses
-    let periodos = numeroAnos * 12 + numeroMeses;
+            // Converta o número de anos em meses
+            let periodos = numeroAnos * 12 + numeroMeses;
 
-    calcularInvestimentoNecessario(objetivoFinal, investimentoMensal, taxaJurosAnual, periodos, montanteInicial, objetivoFinalDisplay, acumuladoMensalDisplay);
-}
+            calcularInvestimentoNecessario(objetivoFinal, investimentoMensal, taxaJurosAnual, periodos, montanteInicial, objetivoFinalDisplay, acumuladoMensalDisplay);
+        }
 
 
         function calcularInvestimentoNecessario(objetivoFinal, investimentoMensal, taxaJurosAnual, numeroMeses, montanteInicial, objetivoFinalDisplay, acumuladoMensalDisplay) {
@@ -391,21 +390,51 @@
             html2pdf(element, options);
         }
 
-    function shareOnFacebook() {
-        var urlToShare = encodeURIComponent(window.location.href);
-        window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare, '_blank');
-    }
+        function shareOnFacebook() {
+            var montanteInicial = document.getElementById('montanteInicial').innerText;
+            var objetivoFinal = document.getElementById('objetivoFinalDisplay').innerText;
+            var acumuladoMensal = document.getElementById('acumuladoMensal').innerText;
 
-    function shareOnTwitter() {
-        var textToShare = encodeURIComponent('Checka aí como vou ficar rico!');
-        var urlToShare = encodeURIComponent(window.location.href);
-        window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
-    }
+            // Crie uma imagem dinâmica com os resultados
+            // Substitua 'URL_DO_SERVIDOR' pelo endpoint real do seu serviço de geração de imagens
+            var imageUrl = 'URL_DO_SERVIDOR/generate-image?montanteInicial=' + montanteInicial +
+                '&objetivoFinal=' + objetivoFinal + '&acumuladoMensal=' + acumuladoMensal;
 
-    function shareOnWhatsApp() {
-        var textToShare = encodeURIComponent('Cheka aí como vou ficar rico! ' + window.location.href);
-        window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
-    }
+            // Abra uma nova janela para compartilhar a imagem no Facebook
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + imageUrl, '_blank');
+        }
+
+
+        function shareOnTwitter() {
+            var montanteInicial = document.getElementById('montanteInicial').innerText;
+            var objetivoFinal = document.getElementById('objetivoFinalDisplay').innerText;
+            var acumuladoMensal = document.getElementById('acumuladoMensal').innerText;
+
+            var textToShare = encodeURIComponent('Confira os resultados da minha simulação de investimento:\n' +
+                'Montante Inicial: ' + montanteInicial + '\n' +
+                'Objetivo Final: ' + objetivoFinal + '\n' +
+                'Acumulado Mensal: ' + acumuladoMensal + '\n\n' +
+                'Saiba mais: ');
+
+            var urlToShare = encodeURIComponent(window.location.href);
+
+            window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            var montanteInicial = document.getElementById('montanteInicial').innerText;
+            var objetivoFinal = document.getElementById('objetivoFinalDisplay').innerText;
+            var acumuladoMensal = document.getElementById('acumuladoMensal').innerText;
+
+            var textToShare = encodeURIComponent('Confira os resultados da minha simulação de investimento:\n' +
+                'Montante Inicial: ' + montanteInicial + '\n' +
+                'Objetivo Final: ' + objetivoFinal + '\n' +
+                'Acumulado Mensal: ' + acumuladoMensal + '\n\n' +
+                'Saiba mais: ' + window.location.href);
+
+            window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
+        }
+
 
     </script>
 </body>

@@ -36,8 +36,6 @@ header {
 header h1 {
     font-size: 2rem;
     color: rgb(255, 255, 255);
-    position: relative;
-    bottom: .1rem;
 }
 
 .divisao {
@@ -157,6 +155,23 @@ label {
     transition: .3s;
     margin-bottom: 10px;
 }
+.botao4 {
+    background-color: var(--cor-primaria);
+    border: none;
+    color: white;
+    height: 3rem;
+    width: 105px;
+    margin-top: 1rem;
+    border-radius: var(--radious-1);
+    position: relative;
+    z-index: 0;
+    transition: .3s;
+    margin-bottom: 10px;
+}
+.botao4:hover {
+    background-color: var(--cor-secundaria);
+}
+
 
 .botao3:hover {
     background-color: var(--cor-primaria);
@@ -479,4 +494,6 @@ label {
     background-color: #b1b1b1; /* Ou qualquer cor de cinza mais escura desejada */
 }
 
-
+footer{
+    background-color: black;
+}

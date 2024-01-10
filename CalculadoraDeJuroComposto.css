@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Classic */
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@ body {
 
 /* Estilos para os cabeçalhos */
 h1 {
-    color: #333;
+    color: black;
     font-size: 24px;
     font-weight: bold;
 }
@@ -27,12 +27,12 @@ a:hover {
 /* Estilos para os botões */
 .bar {
     overflow: hidden;
-    background-color: rgb(77, 77, 77);
+    background-color: black;
     position: fixed;
     top: 0;
     width: 100%;
     color: white;
-    padding: 10px 0; /* Aumentei o padding para dar mais espaço na barra */
+    padding-top: 10px;
     z-index: 1;
 }
 
@@ -191,7 +191,50 @@ h1 {
 }
 
 
+section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px;
+  }
 
+  .formula-container {
+    width: 45%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .card-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Fundo preto */
+    color: white;
+    /* Texto branco */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card-link:hover .hover-text {
+    opacity: 1;
+}
+
+footer{
+    background-color: black;
+}
 
 
 

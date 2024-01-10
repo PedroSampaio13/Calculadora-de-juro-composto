@@ -16,21 +16,20 @@
 </head>
 
 <body>
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+    <header style="padding: 50px; padding-top: 40px;">
         <div class="logo">
-            <a href="../index.html"><img src="../img/logo.png" height="70px"></a>
-         </div>
-        <h1>Simulador de Juros Compostos - Montante Acumulado (Sem Reforços)</h1>
-        <div class="header-buttons">
-            <button class="botao3" onclick="window.location.href='index7.html'"><b>Com Reforços</b></button>
+            <a href="../index.html"><img style="margin-top: 20px;" src="../img/logo.png" height="90px" width="90px"></a>
         </div>
+        <h1>Simulador de Juros Compostos - Montante Acumulado (Sem Reforços)</h1>
     </header>
     <div id="exportContent">
-        <div class="divisao"></div>
         <div class="conteiner">
             <section class="layout">
                 <div class="entradas">
-
+                    <div class="botoes">
+                        <button class="botao4" onclick="window.location.href='index7.html'"><b>Com Reforços</b></button>
+                        <button class="botao3" onclick="window.location.href='index7_sr.html'"><b>Sem Reforços</b></button>
+                    </div>
                     <label for="valorInicial">Valor inicial</label>
                     <div class="campo">
                         <div class="prefixo"><b>€</b></div>
@@ -428,20 +427,30 @@
         }
 
         function shareOnFacebook() {
-            var urlToShare = encodeURIComponent(window.location.href);
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare, '_blank');
-        }
+    var urlToShare = encodeURIComponent(window.location.href);
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare, '_blank');
+}
 
-        function shareOnTwitter() {
-            var textToShare = encodeURIComponent('Checka aí como vou ficar rico!');
-            var urlToShare = encodeURIComponent(window.location.href);
-            window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
-        }
+function shareOnTwitter() {
+    var textToShare = encodeURIComponent('Confira os resultados da minha simulação de juros compostos: \n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n\n' +
+        'Saiba mais: ' + window.location.href);
 
-        function shareOnWhatsApp() {
-            var textToShare = encodeURIComponent('Cheka aí como vou ficar rico! ' + window.location.href);
-            window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
-        }
+    window.open('https://twitter.com/intent/tweet?text=' + textToShare, '_blank');
+}
+
+function shareOnWhatsApp() {
+    var textToShare = encodeURIComponent('Confira os resultados da minha simulação de juros compostos:\n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n\n' +
+        'Saiba mais: ' + window.location.href);
+
+    window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
+}
+
 
     </script>
 </body>
