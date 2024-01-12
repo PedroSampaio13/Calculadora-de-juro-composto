@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Classic */
+    font-family: 'Montserrat', sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
@@ -266,7 +266,22 @@ footer{
     float: right;
 }
 
+#video-container {
+    display: flex;
+    justify-content: center;
+}
 
+#video-container iframe {
+    margin: 0 10px; /* Opcional: Adiciona margem entre os vídeos */
+}
 
-
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black; /* Cor de fundo, pode ser ajustada conforme necessário */
+    color: white;
+    text-align: center;
+  }
+  
   

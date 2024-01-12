@@ -10,69 +10,37 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="/CalculadoraDeJuroComposto.css">
+    <link rel="stylesheet" href="CalculadoraDeJuroComposto.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Adicionando a fonte Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <style>
 
-        body{
+    <style>
+        body {
             font-family: 'Montserrat', sans-serif;
         }
-        .container {
-            margin-bottom: 100px;
-        }
-
-        .faq-container {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 300px;
-        }
-
-        .accordion__container {
-            flex: 1;
-        }
-
-        .contact_form {
-            max-width: 400px;
-            flex: 1;
-            margin-left: 20px; 
-        }
-
-        @media (max-width: 768px) {
-            .faq-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .accordion__container,
-            .contact_form {
-                flex: 1;
-                width: 100%;
-                margin-left: 0; 
-            }
-        }
     </style>
-
     <title>Capital Cash - FAQ</title>
 </head>
 <body>
     <div class="bar">
         <div class="logo">
-            <a href="../index.html"><img src="../img/logo.png" height="90px"></a>
+            <a href="index.html"><img src="img/logo.png" height="90px"></a>
         </div>
         <div class="botoes">
-            <a href="../index.html"><button class="botao botao2">Home</button> </a>
-            <button class="botao botao2" onclick="scrollToCalculadoras()">Simuladores</button>
-            <a href="../educacao.html" ><button class="botao botao2">Educação Financeira</button></a>
+            <a href="index.html"><button class="botao botao2">Home</button> </a>
+            <a href="index.html?scrollToCalculadoras=true"><button class="botao botao2">Simuladores</button></a>
+            <a href="comparacao/comparacao.html"><button class="botao botao2">Comparação de Simuladores</button> </a>
+            <a href="educacao.html"><button class="botao botao2">Educação Financeira</button></a>
             <a href="faq.html"><button class="botao botao1">FAQ</button></a>
-            <a href="https://www.instagram.com/capital_cash__/"><img class="instagram" src="../img/instagram.png" height="40px"></img></a> 
+            <a href="https://www.instagram.com/capital_cash__/"><img class="instagram" src="/img/instagram.png" height="40px"></img></a>
         </div>
     </div>
     <div class="titulo">
-        <img class="imagem" src="../img/banner2.jpg" alt="">
+        <img class="imagem" src="img/banner2.jpg" alt="">
     </div>
     <section class="faq-container container" style="padding-top: 80px;">
         <div class="accordion__container">
@@ -181,20 +149,15 @@
             </form>
         </div>
     </section>
-
     <footer class="text-center text-white">
         <div class="text-center text-white p-3">
-          © 2024 Copyright:
-          <a class="text-white">Capital Cash</a>
+            © 2024 Copyright:
+            <a class="text-white">Capital Cash</a>
         </div>
     </footer>
-
-    <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>
