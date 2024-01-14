@@ -280,17 +280,14 @@ var calcular = document.getElementById("calcular")
         }
 
         function shareOnFacebook() {
-            var montanteInicial = document.getElementById('montanteInicial').innerText;
-            var objetivoFinal = document.getElementById('objetivoFinalDisplay').innerText;
-            var acumuladoMensal = document.getElementById('acumuladoMensal').innerText;
-
-            var imageUrl = 'URL_DO_SERVIDOR/generate-image?montanteInicial=' + montanteInicial +
-                '&objetivoFinal=' + objetivoFinal + '&acumuladoMensal=' + acumuladoMensal;
-
-            
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + imageUrl, '_blank');
+            var urlToShare = encodeURIComponent(window.location.href);
+            var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
+                'Montante Inicial: ' + document.getElementById('montanteInicial').innerText + '\n' +
+                'Objetivo Final: ' + document.getElementById('objetivoFinalDisplay').innerText + '\n' +
+                'Acumulado Mensal: ' + document.getElementById('acumuladoMensal').innerText + '\n' +
+                'Tempo: ' + document.getElementById('numeroAnos').innerText);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
         }
-
 
         function shareOnTwitter() {
             var montanteInicial = document.getElementById('montanteInicial').innerText;

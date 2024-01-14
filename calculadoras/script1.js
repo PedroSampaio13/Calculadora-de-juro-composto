@@ -110,10 +110,10 @@ function calcular(valorInicial, investimentoMensal, jurosAnual, meses, valorTota
             let cell5 = novaLinha.insertCell(4)
 
             cell1.innerHTML = i + 1
-            cell2.innerHTML = dividendoMesArr[i]
-            cell3.innerHTML = jurosAcumuladoArr[i].toFixed(2)
-            cell4.innerHTML = totalInvestidoArr[i]
-            cell5.innerHTML = acumuloTotalArr[i]
+            cell2.innerHTML = "€" + dividendoMesArr[i]
+            cell3.innerHTML = "€" + jurosAcumuladoArr[i].toFixed(2)
+            cell4.innerHTML = "€" + totalInvestidoArr[i]
+            cell5.innerHTML = "€" + acumuloTotalArr[i]
 
             linha++
         }
@@ -307,14 +307,13 @@ function exportToPDF() {
 }
 
 function shareOnFacebook() {
-    var valorTotal = document.getElementById('valorTotal').innerText;
-    var valorInvestido = document.getElementById('valorInvestido').innerText;
-    var jurosTotais = document.getElementById('jurosTotais').innerText;
- 
-    var imageUrl = 'URL_DO_SERVIDOR/generate-image?valorTotal=' + valorTotal +
-        '&valorInvestido=' + valorInvestido + '&jurosTotais=' + jurosTotais;
-
-    window.open('https://www.facebook.com/sharer/sharer.php?u=' + imageUrl, '_blank');
+    var urlToShare = encodeURIComponent(window.location.href);
+    var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
+        'Tempo: ' + document.getElementById('anos').innerText);
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
 }
 
 function shareOnTwitter() {

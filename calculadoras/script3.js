@@ -225,10 +225,10 @@ function calcular(valorInicial, investimentoMensal, jurosAnual, valorDesejado, v
             let cell5 = novaLinha.insertCell(4)
 
             cell1.innerHTML = i + 1
-            cell2.innerHTML = dividendoMesArr[i]
-            cell3.innerHTML = jurosAcumuladoArr[i].toFixed(2)
-            cell4.innerHTML = totalInvestidoArr[i]
-            cell5.innerHTML = acumuloTotalArr[i]
+            cell2.innerHTML = "€" + dividendoMesArr[i]
+            cell3.innerHTML = "€" + jurosAcumuladoArr[i].toFixed(2)
+            cell4.innerHTML = "€" + totalInvestidoArr[i]
+            cell5.innerHTML = "€" + acumuloTotalArr[i]
 
             linha++
         }

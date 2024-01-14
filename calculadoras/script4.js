@@ -305,16 +305,8 @@ function exportToPDF() {
     html2pdf(element, options);
 }
 function shareOnFacebook() {
-// Obtenha os dados do último mês diretamente dos elementos
-var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
-var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
-var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
-
-// Adicionar informações específicas ao compartilhar no Facebook
-var textToShare = encodeURIComponent('Simulação de Juros Compostos: Veja como vou ficar rico! 💰📈\n' +
-    `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
-var urlToShare = encodeURIComponent(window.location.href);
-window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
+    var urlToShare = encodeURIComponent(window.location.href);
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare);
 }
 
 function shareOnTwitter() {
