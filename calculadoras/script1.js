@@ -37,14 +37,14 @@ function setValues() {
     let investimentoMensal = Number(document.getElementById('investimentoMensal').value);
     let jurosAnual = Number(document.getElementById('juros').value);
     let meses = Number(document.getElementById('meses').value);
-    let anos = Number(document.getElementById('anos').value); // Adicionado
+    let anos = Number(document.getElementById('anos').value); 
     let valorTotal = document.getElementById('valorTotal');
     let valorInvestido = document.getElementById('valorInvestido');
     let jurosTotais = document.getElementById('jurosTotais');
 
     
 
-    // Converta o número de anos em meses
+    // Converter o número de anos em meses
     let mesesTotais = anos * 12 + meses;
 
     calcular(valorInicial, investimentoMensal, jurosAnual, mesesTotais, valorTotal, valorInvestido, jurosTotais);
@@ -208,9 +208,6 @@ function exportData() {
     }
 }
 
-// Restante do seu código permanece o mesmo...
-
-// Add this code after the existing script
 document.getElementById('exportCSV').addEventListener('click', exportToCSV);
 
 function exportToCSV() {
@@ -245,7 +242,6 @@ function exportToCSV() {
     document.body.removeChild(link);
 }
 
-// Add this code after the existing script
 document.getElementById('exportJSON').addEventListener('click', exportToJSON);
 
 function exportToJSON() {
@@ -314,13 +310,10 @@ function shareOnFacebook() {
     var valorTotal = document.getElementById('valorTotal').innerText;
     var valorInvestido = document.getElementById('valorInvestido').innerText;
     var jurosTotais = document.getElementById('jurosTotais').innerText;
-
-    // Crie uma imagem dinâmica com os resultados
-    // Substitua 'URL_DO_SERVIDOR' pelo endpoint real do seu serviço de geração de imagens
+ 
     var imageUrl = 'URL_DO_SERVIDOR/generate-image?valorTotal=' + valorTotal +
         '&valorInvestido=' + valorInvestido + '&jurosTotais=' + jurosTotais;
 
-    // Abra uma nova janela para compartilhar a imagem no Facebook
     window.open('https://www.facebook.com/sharer/sharer.php?u=' + imageUrl, '_blank');
 }
 

@@ -337,31 +337,31 @@ function exportToPDF() {
 
 
 function shareOnFacebook() {
-var urlToShare = encodeURIComponent(window.location.href);
-var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
-    'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
-    'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
-    'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
-    'Tempo: ' + document.getElementById('anos').innerText);
-window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
+    var urlToShare = encodeURIComponent(window.location.href);
+    var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
+        'Tempo: ' + document.getElementById('anos').innerText);
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quote=' + textToShare, '_blank');
 }
 
 function shareOnTwitter() {
-var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
-    'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
-    'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
-    'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
-    'Tempo: ' + document.getElementById('anos').innerText);
-var urlToShare = encodeURIComponent(window.location.href);
-window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
+    var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
+        'Tempo: ' + document.getElementById('anos').innerText);
+    var urlToShare = encodeURIComponent(window.location.href);
+    window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + urlToShare, '_blank');
 }
 
 function shareOnWhatsApp() {
-var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
-    'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
-    'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
-    'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
-    'Tempo: ' + document.getElementById('anos').innerText + '\n\n' +
-    'Clique para ver mais: ' + window.location.href);
-window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
+    var textToShare = encodeURIComponent('Confira os resultados do meu simulador de juros compostos:\n\n' +
+        'Valor Total: ' + document.getElementById('valorTotal').innerText + '\n' +
+        'Valor Investido: ' + document.getElementById('valorInvestido').innerText + '\n' +
+        'Juros Totais: ' + document.getElementById('jurosTotais').innerText + '\n' +
+        'Tempo: ' + document.getElementById('anos').innerText + '\n\n' +
+        'Clique para ver mais: ' + window.location.href);
+    window.open('https://api.whatsapp.com/send?text=' + textToShare, '_blank');
 }

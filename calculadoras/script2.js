@@ -161,7 +161,6 @@ var calcular = document.getElementById("calcular")
                     </tr>`;
         });
 
-        // Adicione isso dentro do seu bloco body
         document.getElementById('exportButton').addEventListener('click', exportData);
 
         function exportData() {
@@ -285,12 +284,10 @@ var calcular = document.getElementById("calcular")
             var objetivoFinal = document.getElementById('objetivoFinalDisplay').innerText;
             var acumuladoMensal = document.getElementById('acumuladoMensal').innerText;
 
-            // Crie uma imagem dinâmica com os resultados
-            // Substitua 'URL_DO_SERVIDOR' pelo endpoint real do seu serviço de geração de imagens
             var imageUrl = 'URL_DO_SERVIDOR/generate-image?montanteInicial=' + montanteInicial +
                 '&objetivoFinal=' + objetivoFinal + '&acumuladoMensal=' + acumuladoMensal;
 
-            // Abra uma nova janela para compartilhar a imagem no Facebook
+            
             window.open('https://www.facebook.com/sharer/sharer.php?u=' + imageUrl, '_blank');
         }
 

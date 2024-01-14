@@ -272,14 +272,14 @@ footer{
 }
 
 #video-container iframe {
-    margin: 0 10px; /* Opcional: Adiciona margem entre os vídeos */
+    margin: 0 10px; 
 }
 
 .fixed-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: black; /* Cor de fundo, pode ser ajustada conforme necessário */
+    background-color: black; 
     color: white;
     text-align: center;
   }

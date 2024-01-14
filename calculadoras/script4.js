@@ -310,7 +310,7 @@ var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
 var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
 var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
 
-// Adicionando informações específicas ao compartilhar no Facebook
+// Adicionar informações específicas ao compartilhar no Facebook
 var textToShare = encodeURIComponent('Simulação de Juros Compostos: Veja como vou ficar rico! 💰📈\n' +
     `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
 var urlToShare = encodeURIComponent(window.location.href);
@@ -318,12 +318,12 @@ window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlToShare + '&quo
 }
 
 function shareOnTwitter() {
-// Obtenha os dados do último mês diretamente dos elementos
+// Obter os dados do último mês diretamente dos elementos
 var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
 var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
 var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
 
-// Adicionando informações específicas ao compartilhar no Twitter
+// Adicionar informações específicas ao compartilhar no Twitter
 var textToShare = encodeURIComponent(`Confira essa simulação de Juros Compostos! Veja como vou ficar rico! 💰📈\n` +
     `Último mês - Reforço: ${reforcoMensal}, Montante Acumulado: ${montanteAcumulado}, Juros Totais: ${jurosTotais}`);
 var urlToShare = encodeURIComponent(window.location.href);
@@ -331,7 +331,7 @@ window.open('https://twitter.com/intent/tweet?text=' + textToShare + '&url=' + u
 }
 
 function shareOnWhatsApp() {
-// Obtenha os dados do último mês diretamente dos elementos
+// Obter os dados do último mês diretamente dos elementos
 var reforcoMensal = document.getElementById('resultadoReforcos').innerText;
 var montanteAcumulado = document.getElementById('resultadoTotalInvestido').innerText;
 var jurosTotais = document.getElementById('resutaldoTotalJuros').innerText;
